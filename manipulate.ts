@@ -13,23 +13,26 @@ export function manipulate(text: string): string[] {
     return Array.from(new Set(result))
 }
 
-function heapPermutation(values: string[], size: number, result: string[]) {
+function heapPermutation(source: string[], size: number, result: string[]) {
     if (size === 1) {
-        result.push(values.join(''))
+        result.push(source.join(''))
         return
     }
 
     for (let i = 0; i < size; i++) {
-        heapPermutation(values, size - 1, result)
-
+        heapPermutation(source, size - 1, result)
         if (size % 2 === 1) {
-            [values[0], values[size - 1]] = [values[size - 1], values[0]]
+            swap(source, 0, size - 1)
         } else {
-            [values[i], values[size - 1]] = [values[size - 1], values[i]]
+            swap(source, i, size - 1)
         }
+
     }
 
+}
 
+function swap(arr: string[], index1: number, index2: number): void {
+    [arr[index1], arr[index2]] = [arr[index2], arr[index1]]
 }
 
 

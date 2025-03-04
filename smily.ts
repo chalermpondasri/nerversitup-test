@@ -1,9 +1,13 @@
 /**
  * 
  * @param texts list of string [":)", ":(", ":>"]
- * @returns amount of smily face detected
+ * @returns amount of smiley face detected
  */
-export function countSmilyFace(texts: string[]) : number {
-    // TODO : Start your code here
-    throw new Error("Not implemented");
+export function countSmileyFace(texts: string[]) : number {
+
+    const smileyRegex = /^[:;][-~]?[)D]/
+
+    return texts.reduce((total, currentValue) => {
+        return smileyRegex.test(currentValue) ? ++total : total
+    }, 0)
 }

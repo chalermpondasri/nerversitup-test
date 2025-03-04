@@ -1,4 +1,3 @@
-// Write your test here
 import { findOddNumber } from './odd-number'
 
 describe('Odd number', () => {
